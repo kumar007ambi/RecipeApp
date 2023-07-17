@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Receipe } from '../receipes.model';
 
 @Component({
@@ -7,8 +7,13 @@ import { Receipe } from '../receipes.model';
   styleUrls: ['./recipes-list.component.css']
 })
 export class RecipesListComponent {
-  receipes: Receipe[] = [
-    new Receipe('A Test Receipe','This is simply test','https://www.howtocook.recipes/wp-content/uploads/2021/05/Ratatouille-recipe.jpg'),
-    new Receipe('A Test Receipe','This is simply test','https://www.howtocook.recipes/wp-content/uploads/2021/05/Ratatouille-recipe.jpg')
+  @Output() recipeWasSelected = new EventEmitter<Receipe>();
+  recipes: Receipe[] = [
+    new Receipe('A Test Receipe', 'This is simply test', 'https://www.howtocook.recipes/wp-content/uploads/2021/05/Ratatouille-recipe.jpg'),
+    new Receipe('Another Test Receipe', 'This is simply test', 'https://www.howtocook.recipes/wp-content/uploads/2021/05/Ratatouille-recipe.jpg')
   ] as any;
+
+  onRecipeSelected(recipe: Receipe) {
+     this.recipeWasSelected.emit(recipe)
+  }
 }
