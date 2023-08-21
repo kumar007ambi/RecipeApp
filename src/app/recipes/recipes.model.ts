@@ -1,6 +1,6 @@
 import { Ingredient } from "../shared/ingredient.model";
 
-export class Receipe {
+export class Recipe {
     public name: string;
     public description: string;
     public imagePath: string;
