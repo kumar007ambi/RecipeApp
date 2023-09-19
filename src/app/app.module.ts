@@ -34,7 +34,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     RecipeStartComponent,
     RecipeEditComponent,
     AuthComponent,
-    SpinnerComponent
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
