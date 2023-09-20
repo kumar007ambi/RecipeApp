@@ -14,7 +14,7 @@ export class AuthComponent {
   isLoading = false;
   error: string = null;
 
-  constructor(private authService: AuthService,private router:Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -26,29 +26,33 @@ export class AuthComponent {
     }
     const email = form.value.email;
     const password = form.value.password;
-    this.isLoading = true; 
+   
 
     // let authObs: Observable<AuthResponceData>;
-     
+     this.isLoading = true;
     if (this.isLoginMode) {
-    //  authObs = this.authService.login(email, password);
-    this.authService.login(email,password).subscribe(resData=>{
+      //  authObs = this.authService.login(email, password);
+      this.authService.login(email, password).subscribe(resData => {
         console.log(resData);
+         this.isLoading = false;
         this.router.navigate(['/recipes']);
-      },error=>{
+      }, error => {
         console.log(error)
         this.error = error;
+         this.isLoading = false;
       })
-    this.isLoading = false;
+    
     } else {
       //authObs = this.authService.signup(email, password);
-      this.authService.signup(email,password).subscribe(resData=>{
+      this.authService.signup(email, password).subscribe(resData => {
         console.log(resData)
-      },error=>{
+         this.isLoading = false;
+      }, error => {
         console.log(error)
         this.error = error;
+         this.isLoading = false;
       })
-      this.isLoading = false;
+     
     }
     // authObs.subscribe(
     //   (resData) => {

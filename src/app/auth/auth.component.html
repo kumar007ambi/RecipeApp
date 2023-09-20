@@ -3,8 +3,8 @@
     <div class="alert alert-danger" *ngIf="error">
       <p>{{ error }}</p>
     </div>
-    <div *ngIf="isLoading" >
-      <spinner-app></spinner-app>
+    <div *ngIf="isLoading" style="text-align: center">
+      <loading-spinner-app></loading-spinner-app>
     </div>
     <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
       <div class="form-group">
